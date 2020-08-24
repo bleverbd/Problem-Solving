@@ -7,3 +7,4 @@ int main()
     printf("SOMA = %d\n",SOMA);
     return 0;
 }
+
