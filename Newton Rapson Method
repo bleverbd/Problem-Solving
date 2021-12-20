@@ -1,0 +1,83 @@
+#include <bits/stdc++.h>
+using namespace std;
+double fun(int arr[],int n,double x)
+{
+    int i,j;
+    double fx=0;
+    for(j=0,i=n;i>=0;i--,j++)
+   {
+       fx=fx+arr[j]*pow(x,i);
+   }
+   return fx;
+
+}
+double  diffun(int arr[],int n,double x)
+{
+    int i,j;
+    double fx=0;
+    for(j=0,i=n;i>=0;i--,j++)
+    {
+
+        fx=fx+arr[j]*i*pow(x,i-1);
+        if(i==1)
+        {
+            break;
+
+        }
+
+    }
+    return fx;
+
+}
+
+
+
+int main()
+{
+
+    cout<<"Md Maminur Rahman"<<"\n"<<"id:194008"<<endl;
+    double p,x1=0,x2;
+   int n,k=1;
+   cout<<"Please enter a power of nonlinear equation :";
+   cin>>n;
+   int arr[n];
+   int i,j;
+   int temp=n;
+   for(i=0;i<=n;i++)
+   {
+
+       cout<<"Enter a coefficient x^"<<temp<<":";
+       cin>>arr[i];
+       temp--;
+
+   }
+
+   cout<<endl;
+    while(1)
+    {
+
+
+        x2=x1-(fun(arr,n,x1)/diffun(arr,n,x1));
+        p=x2-x1;
+         if(p>=0&&p<0.0000000000000001)
+        {
+            cout<<"step:"<<k<<"\t"<<"x1="<<x1<<"\t"<<"x2="<<x2<<endl;
+            cout<<"Roots is= "<<x2;
+            k++;
+            break;
+        }
+        else
+        {
+            cout<<"step:"<<k<<"\t"<<"x1="<<x1<<"\t"<<"x2="<<x2<<endl;
+            x1=x2;
+            k++;
+        }
+
+
+    }
+
+
+}
+
+
+
