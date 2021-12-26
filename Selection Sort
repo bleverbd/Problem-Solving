@@ -1,0 +1,119 @@
+#include <iostream>
+using namespace std;
+class Sorting
+{   public:
+    void descending_oder_sort(int arry[ ],int n)
+        {
+            for(int i=0;i<n-1;i++)
+            {
+                int maximum=i;
+                for(int j=i+1;j<n;j++)
+                {
+                    if(arry[j]>arry[maximum])
+                        {
+                            maximum=j;
+                        }
+                }
+                if(maximum!=i)
+                {
+                    swap(arry[i],arry[maximum]);
+                }
+            }
+            for(int k=0;k<n;k++)
+            {
+                cout<<arry[k]<<"\t";
+            }
+        }
+    void descending_oder_sort(char arry[ ],int n)
+        {
+            for(int i=0;i<n-1;i++)
+            {
+                int maximum=i;
+                for(int j=i+1;j<n;j++)
+                {
+                    if(arry[j]>arry[maximum])
+                        {
+                            maximum=j;
+                        }
+                }
+                if(maximum!=i)
+                {
+                    swap(arry[i],arry[maximum]);
+                }
+            }
+            for(int k=0;k<n;k++)
+            {
+                cout<<arry[k]<<"\t";
+            }
+        }
+    void descending_oder_sort(string arry[ ],int n)
+    {
+            for(int i=0;i<n-1;i++)
+            {
+                int maximum=i;
+                for(int j=i+1;j<n;j++)
+                {
+                    if(arry[j]>arry[maximum])
+                        {
+                            maximum=j;
+                        }
+                }
+                if(maximum!=i)
+                {
+                    swap(arry[i],arry[maximum]);
+                }
+            }
+            for(int k=0;k<n;k++)
+            {
+                cout<<arry[k]<<"\t";
+            }
+        }
+};
+
+
+int main()
+{
+
+    Sorting obj;
+    cout<<"Please Select a Option\n";
+    cout<<"1.Integer Shorting\n2.Char Sorting\n3.String Shorting\n";
+    int number;
+    cin>>number;
+    cout<<"How many variable to want descending order:";
+    int n;
+    cin >>n;
+    if(number==1)
+    {
+        cout<<"Please Enter "<<n<<" integer number:";
+        int arry1[n];
+        for(int i=0;i<n;i++)
+        {
+        cin>>arry1[i];
+        }
+        obj.descending_oder_sort(arry1,n);
+    }
+    if(number==2)
+    {
+        cout<<"Please Enter "<<n<<" Char Alphabet:";
+        char arry2[n];
+        for(int i=0;i<n;i++)
+        {
+        cin>>arry2[i];
+        }
+        obj.descending_oder_sort(arry2,n);
+    }
+    if(number==3)
+    {
+        cout<<"Please Enter "<<n<<" String Line:";
+        string arry3[n];
+        for(int i=0;i<n;i++)
+        {
+        cin>>arry3[i];
+        }
+        obj.descending_oder_sort(arry3,n);
+    }
+
+
+    return 0;
+
+}
