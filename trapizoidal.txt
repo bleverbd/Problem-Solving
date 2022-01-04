@@ -1,0 +1,32 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+class Integration{
+    public:
+        double y(double x){
+            return sqrt(1-x*x);
+        }
+        double trapi(double a,double b,double n){
+            double h=(a+b)/n;
+            double s=y(a)+y(b);
+            
+            for(int i=1;i<n;i++)
+                s+=2*y(a+i*h);
+            return (h/2)*s;
+        }
+};
+int main() {
+	Integration ob;
+	double prev,next,diff;
+	int n=5;
+	prev=ob.trapi(0,1,n);
+	do{
+	    n+=5;
+	    next=ob.trapi(0,1,n);
+	    diff=abs(prev-next);
+	    prev=next;
+	}while(diff>0.00001);
+	cout<<"Result is:"<<ob.trapi(0,1,n)<<endl;
+	cout<<"N= "<<n<<endl;
+	return 0;
+}

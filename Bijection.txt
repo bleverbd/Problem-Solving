@@ -1,0 +1,44 @@
+//Find root of the equation x*x-4*x-10 using bisection method.
+//Solution: Root is (x) = -1.74166
+#include <bits/stdc++.h>
+using namespace std;
+
+class Bijection{
+    //double error=0.000001;
+    //double Max_iteration=50;
+    public:
+        double func(double x){
+            return (x*x-4*x-10);
+        }
+        
+        double Find_Root(double x1,double x2){
+            if(func(x1)*func(x2)>0){
+                    cout<<"x1 and x2 are not here"<<endl;
+                    return 0;
+                }
+            double x;
+            x=(x1+x2)/2.0;
+            cout<<"x1= "<<x1<<" ";
+            cout<<"x2= "<<x2<<" ";
+            cout<<"x= "<<x<<endl;
+            while(abs(func(x))>=0.0001){
+                
+                if (func(x1)*func(x)<0)
+                    x2=x;
+                else
+                    x1=x;
+                x=(x1+x2)/2.0;
+                cout<<"x1= "<<x1<<" ";
+                cout<<"x2= "<<x2<<" ";
+                cout<<"x= "<<x<<endl;
+                
+            }
+            cout<<"Root is (x) = "<<x<<endl;
+        }
+};
+int main() {
+    
+    Bijection obj;
+    obj.Find_Root(-2,4);
+	return 0;
+}

@@ -1,0 +1,43 @@
+//Fitting Transcendent Equation(Curve Fitting)
+#include <bits/stdc++.h>
+using namespace std;
+int n;
+double a,b,x[10],y[10],sum;
+
+double Sum_X(){
+    sum=0;
+    for(int i=0;i<n;i++)sum+=log(x[i]);
+    return sum;
+}
+double Sum_Y(){
+    sum=0;
+    for(int i=0;i<n;i++)sum+=log(y[i]);
+    return sum;
+}
+double Sum_XY(){
+    sum=0;
+    for(int i=0;i<n;i++)sum+=(log(x[i])*log(y[i]));
+    return sum;
+}
+double Sum_X2(){
+    sum=0;
+    for(int i=0;i<n;i++)sum+=(log(x[i])*log(x[i]));
+    return sum;
+}
+int main()
+{
+    cout << "How many point do you want?" << endl;
+    cin>>n;
+    cout<<"Enter the value of x and y:";
+    for(int i=0;i<n;i++){
+        cin>>x[i];
+        cin>>y[i];
+    }
+    b=(n*Sum_XY()-Sum_X()*Sum_Y())/(n*Sum_X2()-Sum_X()*Sum_X());
+    a=(Sum_Y()-b*Sum_X())/(double)n;
+    a=pow(2.71828,a);
+    
+    cout<<"a="<<a<<" b="<<b<<endl;
+    cout<<"Y="<<a<<" "<<"X^"<<b<<endl;
+    return 0;
+}

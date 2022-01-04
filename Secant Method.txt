@@ -1,0 +1,68 @@
+// C++ Program to find root of an
+// equations using secant method
+#include <bits/stdc++.h>
+using namespace std;
+// function takes value of x and returns f(x)
+
+class Root
+{
+
+public:
+
+    double f(double x)
+    {
+        // we are taking equation as x^3+x-1
+        //float f = pow(x, 2) -3*x+2;
+        //return f;
+        return x*x-4*x-10;
+    }
+
+    void secant(double x1, double x2, double E)
+    {
+            double x,i;
+            if (f(x1) * f(x2) < 0) {
+            //do {
+			// calculate the intermediate value
+			for( i=0;i<30;i++)
+            {
+
+                x = (x1 * f(x2) - x2 * f(x1)) / (f(x2) - f(x1));
+                cout<<i <<"   "<<x1<<"   "<<x2 <<"   " <<x<<"   "<<f(x1)<<"   "<<f(x2)<<"   "<<f(x)<< endl<<endl;
+                if(fabs(f(x))<=E)   ///or, if(fabs(x3-x2)/x3<=E)
+                    break;
+
+			// check if x0 is root of equation or not
+			//c = f(x1) * f(x0);
+
+			// update the value of interval
+                x1 = x2;
+                x2 = x;
+
+			// update number of iteration
+                //n++;
+
+			// if x0 is the root of equation then break the loop
+			//if (c == 0)
+				//break;
+			//xm = (x1 * f(x2) - x2 * f(x1)) / (f(x2) - f(x1));
+		//} while (fabs(xm - x0) >= E); // repeat the loop
+								// until the convergence
+
+            }
+            cout << "Root of the given equation=" << x<< endl;
+		cout << "No. of iterations = " << i+1 << endl;
+	//else
+		//cout << "Can not find a root in the given inteval";
+    }
+    }
+};
+
+// Driver code
+int main()
+{
+	Root obj;
+	// initializing the values
+	float x1 = 4, x2 = 2, E = 0.0001;
+	obj.secant(x1, x2, E);
+	return 0;
+}

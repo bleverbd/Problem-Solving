@@ -1,0 +1,46 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+double f(double x)
+{
+    return 1/x;
+}
+
+double trapezoidal(int n,double a,double b)
+{
+    double h = (b-a)/n;
+    double s=f(a)+f(b);
+    for(int i=1;i<n;i++)
+    {
+        s+=2*f(a+i*h);
+    }
+    return (h/2)*s;
+}
+
+int main()
+{
+    double R[10][10];
+    double a,b;
+    int n; /// n = number of sub interval or trapezium
+    cout<<"Enter lower limit:";
+    cin>>a;
+    cout<<"Enter upper limit:";
+    cin>>b;
+
+    for(int j=1;j<=5;j++)
+    {
+        n = pow(2,j-1);  /// n = number of sub interval or trapezium which will be double in every loop
+        R[j][1] = trapezoidal(n,a,b);
+        cout<<R[j][1]<<" ";
+        for(int k=2;k<=j;k++)
+        {
+            R[j][k] = R[j][k-1] + ( (R[j][k-1] - R[j-1][k-1]) / (pow(4,k-1)-1) );
+            cout<<R[j][k]<<" ";
+        }
+        cout<<endl;
+    }
+
+
+    return 0;
+}
+

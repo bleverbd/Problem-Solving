@@ -1,0 +1,60 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+class Myclass
+{
+public:
+
+    double error=0.0000001;
+    double x,i;
+    int maxiteration=30;
+
+    double func(double x)
+    {
+       return x*x-4*x-10;
+    }
+
+    findroot (double x1,double x2)
+    {
+        if(func(x1)*func(x2)>0)
+            return 0;
+        for(i=0;i<30;i++)
+        {
+           x=(x1*func(x2)-x2*func(x1))/(func(x2)-func(x1));
+           cout<<"iteration:"<<i+1<<"     x1="<<x1<<"  y1= "<<func(x1)<<"   "<<"     x2="<<x2 <<"   y2= "<<func(x2)<<"   "<<"  x= "<<x<<"   y= "<<func(x)<<endl;
+
+            if(func(x)<0)
+            {
+                x1=x1;
+                x2=x;
+            }
+            else if(func(x)>0)
+            {
+                x2=x2;
+                x1=x;
+            }
+
+            //cout<<"iteration:"<<i+1<<" "<<"x1= "<<x1<<" x2="<<x2<<" x="<<x<<endl;
+            if(func(x)==0)
+                break;
+
+            }
+
+    }
+};
+
+
+int main()
+{
+    Myclass obj;
+    double x1,x2;
+
+    cout<<"Enter -2 for x1:"<<endl<<"x1= ";
+    cin>>x1;
+    cout<<endl<<"Enter -1 for x2:"<<endl<<"x2= ";
+    cin>>x2;
+
+    obj.findroot(x1,x2);
+
+    return 0;
+}
